@@ -1,0 +1,20 @@
+CREATE TABLE sportsmans (
+            id INT NOT NULL AUTO_INCREMENT,
+            FIO VARCHAR(100) NOT NULL,
+            email VARCHAR(50) NOT NULL,
+            phone BIGINT NOT NULL,
+            dateOfBirth DATE NOT NULL,
+            age TINYINT NOT NULL,
+            createdAt DATETIME NOT NULL,
+            passport BIGINT NOT NULL,
+            avgPlace TINYINT NOT NULL,
+            bio TEXT NOT NULL,
+            video LONGBLOB NOT NULL,
+            PRIMARY KEY (id));
+
+SELECT FIO FROM sportsmans 
+        INNER JOIN competition 
+        WHERE sportsmans.id = competition.sportsman 
+        GROUP BY FIO 
+        ORDER BY COUNT(competition.id) DESC 
+        LIMIT 5;
